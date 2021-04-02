@@ -1,0 +1,6 @@
+domain: learnCRD
+layout:
+- go.kubebuilder.io/v3
+projectName: learncrd
+repo: learnCRD
+version: "3"
