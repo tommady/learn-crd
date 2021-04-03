@@ -1,4 +1,4 @@
-module learnCRD
+module learn.crd
 
 go 1.15
 

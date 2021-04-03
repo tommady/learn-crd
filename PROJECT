@@ -1,6 +1,6 @@
-domain: learnCRD
+domain: learn.crd
 layout:
 - go.kubebuilder.io/v3
 projectName: learncrd
-repo: learnCRD
+repo: learn.crd
 version: "3"
