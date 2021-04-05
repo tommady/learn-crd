@@ -13,4 +13,4 @@ kind: Kustomization
 images:
 - name: controller
   newName: docker.io/tommady/learn-crd
-  newTag: latest
+  newTag: arm64
