@@ -57,7 +57,7 @@ build: generate fmt vet ## Build manager binary.
 run: manifests generate fmt vet ## Run a controller from your host.
 	go run ./main.go
 
-podman-build: test ## Build podman image with the manager.
+podman-build: ## Build podman image with the manager.
 	podman build -t ${IMG} .
 
 podman-push: ## Push podman image with the manager.
