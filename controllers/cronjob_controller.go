@@ -88,7 +88,7 @@ func (r *CronJobReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ct
 	var childJobs kbatch.JobList
 	if err := r.List(ctx, &childJobs,
 		client.InNamespace(req.Namespace),
-		client.MatchingFields{"jobOwnerKey": req.Name}); err != nil {
+		client.MatchingFields{jobOwnerKey: req.Name}); err != nil {
 
 		log.Error(err, "unable to list child Jobs")
 		return ctrl.Result{}, err
