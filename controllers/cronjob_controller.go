@@ -133,7 +133,7 @@ func (r *CronJobReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ct
 
 	cronJob.Status.LastScheduleTime = nil
 	if mostRecentTime != (time.Time{}) {
-		cronJob.Status.LastScheduleTime = &metav1.Time{Time: &mostRecentTime}
+		cronJob.Status.LastScheduleTime = &metav1.Time{Time: mostRecentTime}
 	}
 
 	cronJob.Status.Active = nil
@@ -320,10 +320,11 @@ func (r *CronJobReconciler) SetupWithManager(mgr ctrl.Manager) error {
 		r.Clock = realClock{}
 	}
 
-	if err := mgr.GetfieldsIndexer().IndexField(
+	if err := mgr.GetFieldIndexer().IndexField(
+		context.Background(),
 		&kbatch.Job{},
 		jobOwnerKey,
-		func(rawObj runtime.Object) []string {
+		func(rawObj client.Object) []string {
 			job := rawObj.(*kbatch.Job)
 			owner := metav1.GetControllerOf(job)
 			if owner == nil {
